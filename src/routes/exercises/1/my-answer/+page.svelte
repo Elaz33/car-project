@@ -1,17 +1,17 @@
 <script lang="ts">
-    let incrementor = 0;
-    let numThree = 1000;
-    let threes: number[] = [...Array(numThree)].map(() => {
-        return (incrementor += 3);
-    });
+
+    let numbers:number[] = [];
+    for(let i = 3; i <= 3000; i +=3){
+       numbers.push(i);
+    }
 </script>
 
 <!------------------------------------------------------------>
 
 <h2>Numbers:</h2>
 <div class="the-box">
-    {#each threes as three}
-        <div class="items">{three}</div>
+    {#each numbers as three}
+        <div class="item">{three}</div>
     {/each}
 </div>
 
@@ -21,11 +21,9 @@
     .the-box {
         display: flex;
         flex-wrap: wrap;
+         justify-content: space-between;   
     }
-    .items {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+    .item {
         flex: 1;
         background-color: blue;
         margin: 5px;
