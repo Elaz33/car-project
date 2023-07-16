@@ -1,9 +1,4 @@
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-    href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Goldman&display=swap"
-    rel="stylesheet"
-/>
+
 
 <div class="button-box">
     <div class="fancy-button">

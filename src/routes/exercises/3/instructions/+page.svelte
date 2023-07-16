@@ -147,7 +147,7 @@
         </pre>
     </li>
     <li>The names should be sorted alphabetically within each section.</li>
-    <li>Submitted answer should be here: <a href="/exercises/3/my-answer" target="_blank">/exercises/3/my-answer</a></li>
+    <li>Submitted answer should be here: <a href="/exercises/3\instructions/my-answer" target="_blank">/exercises/3/my-answer</a></li>
 </ul>
 
 <!------------------------------------------------------------>
