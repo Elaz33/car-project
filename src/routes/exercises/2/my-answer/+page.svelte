@@ -34,6 +34,7 @@
         text-align: center;
         font-family: "Fascinate Inline", cursive;
         font-family: "Goldman", cursive;
+        text-shadow: red 0 -2px;
         font-size: 48px;
         color: white;
     }

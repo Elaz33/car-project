@@ -1,18 +1,16 @@
 <script lang="ts">
-
-
-    const letters = "abcdefghijklmnopqrstuvwxyz"
-        .toUpperCase()
-        .split("");
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const UpperAlpha = alphabet.toUpperCase();
+    const finalAlpha = UpperAlpha.split("");
 
     const sectionNames1 = "A - H";
     const sectionNames2 = "I - Q";
     const sectionNames3 = "R - Z";
 
     // the 3 parts of the alphabet
-    const part1 = letters.slice(0, 8);
-    const part2 = letters.slice(8, 17);
-    const part3 = letters.slice(17, 26);
+    const part1 = finalAlpha.slice(0, 8);
+    const part2 = finalAlpha.slice(8, 17);
+    const part3 = finalAlpha.slice(17, 26);
 
     const studentNames = [
         "Thea Payne",
@@ -116,8 +114,9 @@
         "Alison Murphy",
         "Cameron Watts",
     ];
+
     // function to split the strings of the students in the array
-    function splitTheStrings (array: string[]) {
+    function splitTheStrings(array: String[]) {
         const newArr = [];
         for (let i = 0; i < array.length; i++) {
             newArr.push(array[i].split(" "));
@@ -130,45 +129,49 @@
         firstName;
         lastName;
         section;
-        constructor(public firstName: string, public lastName: string, public section: string) {
+        constructor(firstName: string, lastName: string, section: string) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.section = section;
         }
     }
+
     // instantiating the class with the student names have not dealt with section yet
     const finalResult = splitStrings.map(
-        names => new Student(names[0], names[1], "")
+        (names) => new Student(names[0], names[1], "")
     );
     // sorting the student class to be alphabetical order
     finalResult.sort((a, b) => a.lastName.localeCompare(b.lastName));
     // populating the sections
-   finalResult.forEach((s) => {
+    finalResult.forEach((s) => {
         part1.forEach((a) => {
-         part2.forEach((b) => {
-               part3.forEach((c) => {
-                  if (s.lastName.charAt(0) === a) {
-             } else if (s.lastName.charAt(0) === b) {
-                       s.section = sectionNames2;
-                 } else if (s.lastName.charAt(0) === c) {
-                  s.section = sectionNames3;
-               }
+            part2.forEach((b) => {
+                part3.forEach((c) => {
+                    if (s.lastName.charAt(0) === a) {
+                        s.section = sectionNames1;
+                    } else if (s.lastName.charAt(0) === b) {
+                        s.section = sectionNames2;
+                    } else if (s.lastName.charAt(0) === c) {
+                        s.section = sectionNames3;
+                    }
                 });
-      });
-   });
-  });
+            });
+        });
+    });
 
+    console.log(finalResult);
 </script>
 
 <h1 class="head-line">Class of 2023</h1>
 <section class="group">
     <p class="text">Section: A-H</p>
     {#each finalResult as final}
-        {#each part1 as p1}
-            {#if final.lastName.charAt(0) === p1}
-                <pre class="name-holder">
+        {#if final.section === "A-H"}
+            <pre class="name-holder">
                     {final.lastName} 
                     {final.firstName}  
                 </pre>
-            {/if}
-        {/each}
+        {/if}
     {/each}
 </section>
 <section class="group">
