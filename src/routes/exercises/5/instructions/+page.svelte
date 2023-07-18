@@ -326,6 +326,7 @@
   <li>In the totals row, in the "Worth" column write the sum of the totals of used cars</li>
   <li>Everything in the totals row should be bold</li>
   <li>To calculate the "total worth" value, use a simple for..of loop -- no other array loops or methods may be used.</li>
+  <li>Put your answer here: <a href="/exercises/5/my-answer">/exercises/5/my-answer</a></li>
 </ul>
 
 <!------------------------------------------------------------>
