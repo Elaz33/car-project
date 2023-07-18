@@ -127,7 +127,7 @@
         }
         return newArr;
     }
-    function getSection(student:any):string[]{
+    function assignSection(student:Student):Student{
        if (section1Letters.some((s1) => s1 === student.lastName.charAt(0))) {
             student.section = sectionNames1;
         } else if (section2Letters.some((s2) => s2 === student.lastName.charAt(0))) {
@@ -147,7 +147,7 @@
    classOfStudents.sort((a, b) => a.lastName.localeCompare(b.lastName));
     // populating the sections
     for (const s of classOfStudents) {
-        getSection(s)
+        assignSection(s)
     }
     console.log(classOfStudents);
 </script>
