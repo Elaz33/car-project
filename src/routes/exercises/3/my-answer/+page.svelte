@@ -1,18 +1,21 @@
 <script lang="ts">
-
-
-    const letters = "abcdefghijklmnopqrstuvwxyz"
-        .toUpperCase()
-        .split("");
+    class Student {
+        constructor(
+            public firstName: string,
+            public lastName: string,
+            public section: string
+        ) {}
+    }
+    const letters = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
 
     const sectionNames1 = "A - H";
     const sectionNames2 = "I - Q";
     const sectionNames3 = "R - Z";
 
     // the 3 parts of the alphabet
-    const part1 = letters.slice(0, 8);
-    const part2 = letters.slice(8, 17);
-    const part3 = letters.slice(17, 26);
+    const section1Letters = letters.slice(0, 8);
+    const section2Letters = letters.slice(8, 17);
+    const section3Letters = letters.slice(17, 26);
 
     const studentNames = [
         "Thea Payne",
@@ -117,84 +120,69 @@
         "Cameron Watts",
     ];
     // function to split the strings of the students in the array
-    function splitTheStrings (array: string[]) {
+    function splitsString(array: string[]): string[][] {
         const newArr = [];
         for (let i = 0; i < array.length; i++) {
             newArr.push(array[i].split(" "));
         }
         return newArr;
     }
-    const splitStrings = splitTheStrings(studentNames);
-
-    class Student {
-        firstName;
-        lastName;
-        section;
-        constructor(public firstName: string, public lastName: string, public section: string) {
+    function getSection(student:any):string[]{
+       if (section1Letters.some((s1) => s1 === student.lastName.charAt(0))) {
+            student.section = sectionNames1;
+        } else if (section2Letters.some((s2) => s2 === student.lastName.charAt(0))) {
+            student.section = sectionNames2;
+        } else if (section3Letters.some((s3) => s3 === student.lastName.charAt(0))) {
+            student.section = sectionNames3;
         }
+        return student;
     }
+    const splitNames = splitsString(studentNames);
+
     // instantiating the class with the student names have not dealt with section yet
-    const finalResult = splitStrings.map(
-        names => new Student(names[0], names[1], "")
+    const classOfStudents = splitNames.map(
+        (names) => new Student(names[0], names[1], "")
     );
     // sorting the student class to be alphabetical order
-    finalResult.sort((a, b) => a.lastName.localeCompare(b.lastName));
+   classOfStudents.sort((a, b) => a.lastName.localeCompare(b.lastName));
     // populating the sections
-   finalResult.forEach((s) => {
-        part1.forEach((a) => {
-         part2.forEach((b) => {
-               part3.forEach((c) => {
-                  if (s.lastName.charAt(0) === a) {
-             } else if (s.lastName.charAt(0) === b) {
-                       s.section = sectionNames2;
-                 } else if (s.lastName.charAt(0) === c) {
-                  s.section = sectionNames3;
-               }
-                });
-      });
-   });
-  });
-
+    for (const s of classOfStudents) {
+        getSection(s)
+    }
+    console.log(classOfStudents);
 </script>
 
 <h1 class="head-line">Class of 2023</h1>
 <section class="group">
     <p class="text">Section: A-H</p>
-    {#each finalResult as final}
-        {#each part1 as p1}
-            {#if final.lastName.charAt(0) === p1}
-                <pre class="name-holder">
-                    {final.lastName} 
-                    {final.firstName}  
+    {#each classOfStudents as cos}
+        {#if cos.section == "A - H"}
+            <pre class="name-holder">
+                    {cos.lastName},{cos.firstName}                    
                 </pre>
-            {/if}
-        {/each}
+        {/if}
     {/each}
 </section>
+
 <section class="group">
     <p class="text">Section: I-Q</p>
-    {#each finalResult as final}
-        {#each part2 as p2}
-            {#if final.lastName.charAt(0) === p2}
-                <pre class="name-holder">
-                    {final.lastName} 
-                    {final.firstName} 
+    {#each classOfStudents as cos}
+        {#if cos.section === "I - Q"}
+            <pre class="name-holder">
+                    {cos.lastName},{cos.firstName}                  
                 </pre>
-            {/if}
-        {/each}
+        {/if}
     {/each}
 </section>
+
 <section class="group">
     <p class="text">Section: R-Z</p>
-    {#each finalResult as final}
-        {#each part3 as p3}
-            {#if final.lastName.charAt(0) === p3}
-                <pre class="name-holder">
-                    {final.lastName} 
-                    {final.firstName} 
+    {#each classOfStudents as cos}
+        {#if cos.section === "R - Z"}
+            <pre class="name-holder">
+                    {cos.lastName},{cos.firstName}                   
                 </pre>
-            {/if}
-        {/each}
+        {/if}
     {/each}
 </section>
 
@@ -210,7 +198,7 @@
     }
     .name-holder {
         text-align: center;
-        margin-right: 100px;
+        margin-right: 17px;
     }
     .text {
         text-align: center;
