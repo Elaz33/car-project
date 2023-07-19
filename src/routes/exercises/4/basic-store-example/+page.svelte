@@ -1,3 +1,4 @@
++
 <script lang="ts">
 
   import {magicNumberStore} from '$lib/stores/magic-number.store';

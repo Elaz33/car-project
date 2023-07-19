@@ -137,6 +137,7 @@
         }
         return student;
     }
+    
     const splitNames = splitsString(studentNames);
 
     // instantiating the class with the student names have not dealt with section yet
