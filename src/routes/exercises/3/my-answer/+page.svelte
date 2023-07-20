@@ -142,7 +142,7 @@
 
     // instantiating the class with the student names have not dealt with section yet
     const classOfStudents = splitNames.map(
-        (names) => new Student(names[0], names[1], "")
+        names => new Student(names[0], names[1], "")
     );
     // sorting the student class to be alphabetical order
    classOfStudents.sort((a, b) => a.lastName.localeCompare(b.lastName));
