@@ -9,6 +9,7 @@
 <h4>Part a</h4>
 <ul>
   <li>This is a continuation of exercise 4, so copy your solution from exercise 4 to a new solution here in exercise 6 as your starting point.</li>
+  <li>Put your answer here: <a href="/exercises/6/my-answer">/exercises/6/my-answer</a></li>
   <li>Remove the 2nd table so there's just the div table displaying the cars.</li>
   <li>Remove the space between the rows.</li>
   <li>Remove the horizontal lines (borders) from the table cells but leave the vertical lines.  Also, make the vertical lines as thin as possible.  In the end, between each column should be one solid vertical line (1px wide) going all the way down the table.  Make sure there are no vertical lines on the edge/outside of the table -- only include these column separator lines between columns.</li>
