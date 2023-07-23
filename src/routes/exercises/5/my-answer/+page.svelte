@@ -372,12 +372,11 @@
             <div class="car-item">{car.worth}</div>
         </div>
     {/each}
-    <br>
-    <div class="bottom-row">
-         <div class="bottom-row-title">Total</div>
-        <div class="sum">{total}</div>
-       
-    </div>
+    <br />
+</div>
+<div class="bottom-row">
+    Total
+    <div class="sum">{total}</div>
 </div>
 
 <style>
@@ -415,22 +414,19 @@
         border: solid black;
         padding: 7px;
     }
-   
-    .bottom-row {  
+
+    .bottom-row {
         display: flex;
-        position: relative;
         width: 74.8%;
         border: solid black;
-    }
-    .bottom-row-title {
-        position: absolute;
-        left: 8%;
         font-weight: bolder;
         font-size: xx-large;
     }
+
     .sum {
-        position: relative;
-        left: 85%;
+        display: flex;
+        flex: 1;
+        justify-content: right;
         font-weight: bolder;
         font-size: xx-large;
     }
