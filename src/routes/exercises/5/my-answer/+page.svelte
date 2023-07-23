@@ -358,7 +358,6 @@
 </script>
 
 <div class="header">
-    <div class="header-item">Id</div>
     <div class="header-item">Make</div>
     <div class="header-item">Model</div>
     <div class="header-item">Year</div>
@@ -367,7 +366,6 @@
 <div class="table">
     {#each cars as car}
         <div class="row">
-            <div class="car-item">{car.id}</div>
             <div class="car-item">{car.make}</div>
             <div class="car-item">{car.model}</div>
             <div class="car-item">{car.year}</div>
@@ -418,9 +416,7 @@
         padding: 7px;
     }
     .empty-row {
-        display: flex;
         width: 73.6%;
-        border: solid black;
         padding: 8px;
     }
     .bottom-row {
