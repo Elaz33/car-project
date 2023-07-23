@@ -372,10 +372,11 @@
             <div class="car-item">{car.worth}</div>
         </div>
     {/each}
-    <div class="empty-row" />
+    <br>
     <div class="bottom-row">
+         <div class="bottom-row-title">Total</div>
         <div class="sum">{total}</div>
-        <div class="bottom-row-title">Total</div>
+       
     </div>
 </div>
 
@@ -384,7 +385,7 @@
         display: flex;
         width: 75%;
     }
-    div.header > div:nth-child(5) {
+    div.header > div:nth-child(4) {
         font-weight: bolder;
         font-size: x-large;
     }
@@ -402,11 +403,10 @@
         width: 75%;
         justify-content: center;
     }
-    div.row > div:nth-child(5) {
+    div.row > div:nth-child(4) {
         font-weight: bolder;
         font-size: larger;
     }
-
     .car-item {
         display: flex;
         flex: 1;
@@ -415,25 +415,22 @@
         border: solid black;
         padding: 7px;
     }
-    .empty-row {
-        width: 73.6%;
-        padding: 8px;
-    }
-    .bottom-row {
+   
+    .bottom-row {  
         display: flex;
-        width: 74.6%;
+        position: relative;
+        width: 74.8%;
         border: solid black;
-        font-weight: bolder;
     }
     .bottom-row-title {
-        position: relative;
-        left: 18%;
+        position: absolute;
+        left: 8%;
         font-weight: bolder;
         font-size: xx-large;
     }
     .sum {
         position: relative;
-        left: 86%;
+        left: 85%;
         font-weight: bolder;
         font-size: xx-large;
     }
