@@ -4,3 +4,4 @@
 <p><a href="/exercises/3/instructions">Exercise 3</a></p>
 <p><a href="/exercises/4/instructions">Exercise 4</a></p>
 <p><a href="/exercises/5/instructions">Exercise 5</a></p>
+<p><a href="/exercises/6/instructions">Exercise 6</a></p>
