@@ -1,6 +1,5 @@
 import { writable } from 'svelte/store';
 
-
 const carStore = writable([{
     make: "toyota",
     model: "camry",
@@ -37,7 +36,6 @@ const carStore = writable([{
     condition: "poor"
 },
 ]);
-
 
 export default carStore;
 
