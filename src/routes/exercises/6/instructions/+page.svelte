@@ -42,15 +42,25 @@
   <li>You're going to have to share the state somehow between the two components.  Do this with svelte stores.  There are lots of ways to accomplish this -- feel free to create or modify any svelte stores as needed.  But do not have any state maintained within a svelte file (i.e., all "state" should be kept in one or more stores somewhere).</li>
 </ul>
 
-<h4>Part d</h4>
+<h4>Part d: Update a car</h4>
 <ul>
   <li>Bind the inputs such that if the user edits a value, that value will be retained and the table will be automatically updated to display the new value.</li>
 </ul>
 
-<h4>Part e</h4>
+<h4>Part e: Add a car</h4>
 <ul>
   <li>Create a button above the top-right corner of the table component which says "Add a car".</li>
   <li>When clicked, a new empty row is created at the top of the table, and that row becomes the active row, and the cursor automatically moves to the first text input box.</li>
+</ul>
+
+<h4>Part f: Delete a car</h4>
+<ul>
+  <li>Create a button underneath the "Add a car" button you made in part e which says "Remove this car"</li>
+  <li>The button should be red (#990000) with light yellow writing (#ffff88)</li>
+  <li>Made sure the "add" and "remove" buttons are the exact same width (so they line up beautifully)</li>
+  <li>The button should be hidden by default.  It is only shown while a car record has been made active.</li>
+  <li>If you click on the button, the active record gets deleted (and no record should be active afterwards).</li>
+  <li>Before the actual delete happens, the user is prompted to confirm the action.  It should say: "Are you sure you want to remove this 2020 Toyota Camry record?"  Use the <b>confirm( )</b> command to do this.</li>
 </ul>
 
 <!------------------------------------------------------------>
