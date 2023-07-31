@@ -1,7 +1,7 @@
 <script lang="ts">
     import carList from "$lib/stores/car.store";
     import {activeCarStore} from "$lib/stores/functional.store";
-    import {handleClick} from "$lib/stores/functional.store";
+   
     // import changeData from  "$lib/stores/car.store";
 
     function changeData() {
@@ -19,7 +19,7 @@
     })
 }
 </script>
-<button onclick ="{changeData}" class="add">add a car</button>
+<button on:click ="{changeData}" class="add">add a car</button>
 <div class="header">
     <div class="header-item">Make</div>
     <div class="header-item">Model</div>
@@ -30,22 +30,24 @@
 
 <div  class="table">
     {#each $carList as car}
-        <div  class="row"  >
-            <div class:active-car={$activeCarStore === car.make} on:click={()=> {$activeCarStore= car.make} } class="row-item">{car.make}</div>
+        <div  class="row" class:active-car ={$activeCarStore = car}  on:click={()=> {$activeCarStore = car} }   >
+            <div class="row-item">{car.make}</div>
             <hr class="column-line" />
-            <div class:active-car={$activeCarStore === car.model} on:click={()=> {$activeCarStore= car.model} } class="row-item">{car.model}</div>
+            <div   class="row-item">{car.model}</div>
             <hr class="column-line" />
-            <div class:active-car={$activeCarStore === car.year} on:click={()=> {$activeCarStore= car.year} } class="row-item">{car.year}</div>
+            <div   class="row-item">{car.year}</div>
             <hr class="column-line" />
-            <div class:active-car={$activeCarStore === car.mileage} on:click={()=> {$activeCarStore = car.mileage} } class="row-item">{car.mileage}</div>
-            <hr class="column-line" />
-            <div class:active-car={$activeCarStore === car.condition} on:click={()=> {$activeCarStore= car.condition} } class="row-item">{car.condition}</div>
+            <div    class="row-item">{car.mileage}</div>
+            <hr class="column-line" /> 
+            <div   class="row-item">{car.condition}</div>
         </div>
     {/each}
 </div>
 
 <div class="active-box-id">
-  activeCar: {$activeCarStore}
+    {#if $activeCarStore !== null}
+  activeCar: {$activeCarStore.make}
+  {/if}
 </div>
 
 <style>

@@ -1,26 +1,18 @@
 <script lang="ts">
-    import carList from "$lib/stores/car.store";
     import CarList from "./car-list.svelte";
-    import { handleClick } from "$lib/stores/functional.store";
    import {activeCarStore} from "$lib/stores/functional.store";
-    import Page from "../../4/instructions/+page.svelte";
+
 
   
 </script>
 
-<!-- {#each $carList  as car }
-  <section class="car-info" contenteditable="true" bind:innerText={car.make}>  
-    </section>   
-
-     {#each $carList  as car }
-  <section class="car-info" contenteditable="true" bind:innerText={car.model}>  
-    </section>   
- -->
-<section class="car-info" contenteditable="true">
-    Make: <input class="car-info" type="text" value={$activeCarStore}/>  
-    Model: <input class="car-info" type="text" />
-    Year: <input class="car-info" type="number" />
-    Condition: <input class="car-info" type="number"/>
+<section class="car-info">
+    {#if $activeCarStore !== null}
+    Make: <input class="car-info" type="text"  value={$activeCarStore.make}/>  
+    Model: <input class="car-info" type="text" value= {$activeCarStore.model} />
+    Year: <input class="car-info" type="number" value={$activeCarStore.year} />
+    Condition: <input class="car-info" type="text" value={$activeCarStore.condition}/>
+    {/if}
 </section>
 
 <style>
