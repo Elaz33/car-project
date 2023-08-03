@@ -21,10 +21,27 @@
             if ($activeCarStore !== null) return [...cars.slice()];
         });
     }
+
+
+    function onAddCar() {
+        addData();
+
+        // select new row (make it the active car)
+        $activeCarStore = $carList[0];
+
+        // move the focus (using vanilla javascript)
+        const inp:HTMLInputElement = document.querySelector('.car-make');
+        inp.focus();
+
+        // move the focus (using svelte)
+        // const inp2;
+        // inp2.focus();
+    }
+
 </script>
 
 <div class="button-group">
-    <button on:click={addData} class="add">add a car</button>
+    <button on:click={onAddCar} class="add">add a car</button>
     {#if visible === true}
         <button on:click={removeData} class="delete">Remove this car</button>
     {/if}
@@ -44,43 +61,32 @@
             class:active-car={$activeCarStore === car}
             on:click={() => handleRowClick(car)}
         >
-            <!-- I had to use contenteditable otherwise the bind innerText does not work -->
             <div
                 class="row-item"
-                contenteditable="true"
-                bind:innerText={car.make}
             >
                 {car.make}
             </div>
             <hr class="column-line" />
             <div
                 class="row-item"
-                contenteditable="true"
-                bind:innerText={car.model}
             >
                 {car.model}
             </div>
             <hr class="column-line" />
             <div
                 class="row-item"
-                contenteditable="true"
-                bind:innerText={car.year}
             >
                 {car.year}
             </div>
             <hr class="column-line" />
             <div
                 class="row-item"
-                contenteditable="true"
-                bind:innerText={car.mileage}
             >
                 {car.mileage}
             </div>
             <hr class="column-line" />
             <div
                 class="row-item"
-                contenteditable="true"
-                bind:innerText={car.condition}
             >
                 {car.condition}
             </div>

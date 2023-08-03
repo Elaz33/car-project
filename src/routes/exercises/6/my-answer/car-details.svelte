@@ -1,25 +1,51 @@
 <script lang="ts">
-    import CarList from "./car-list.svelte";
     import carList from "$lib/stores/car.store";
     import { activeCarStore } from "$lib/stores/functional.store";
+    import { writable } from 'svelte/store';
+
+
+    function updateCarListByIndex() {
+        carList.update(cars => {
+            if ($activeCarStore === null) return cars;      // do nothing
+            //------------------------------------------------------------
+            const carIndex = cars.findIndex(car => {
+                return car.id === $activeCarStore.id;
+            });
+            cars[carIndex] = $activeCarStore;
+            return cars;
+        });
+    }
+
+
+    function updateCarList() {
+        carList.update(cars => cars);
+    }
+
+
+
+
 </script>
 
 <div class="container">
     {#if $activeCarStore !== null}
         <div class="input-group">
             <div class="header">Make:</div>
-            <input class="car-info" type="text" value={$activeCarStore.make} />
+            <input class="car-info car-make" type="text" bind:value={$activeCarStore.make} on:keyup={updateCarList}
+                   on:keyup={() => console.log('keyup')}
+                   on:keydown={() => console.log('keydown')}
+                   on:keypress={() => console.log('keypress')}
+            />
         </div>
         <div class="input-group">
             <div class="header">Model:</div>
-            <input class="car-info" type="text" value={$activeCarStore.model} />
+            <input class="car-info" type="text" bind:value={$activeCarStore.model} />
         </div>
         <div class="input-group">
             <div class="header">Year:</div>
             <input
                 class="car-info"
                 type="number"
-                value={$activeCarStore.year}
+                bind:value={$activeCarStore.year}
             />
         </div>
         <div class="input-group">
@@ -27,7 +53,7 @@
             <input
                 class="car-info"
                 type="number"
-                value={$activeCarStore.mileage}
+                bind:value={$activeCarStore.mileage}
             />
         </div>
         <div class="input-group">
@@ -35,7 +61,7 @@
             <input
                 class="car-info"
                 type="text"
-                value={$activeCarStore.condition}
+                bind:value={$activeCarStore.condition}
             />
         </div>
     {/if}

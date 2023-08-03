@@ -12,7 +12,7 @@ import type CarList from "../../routes/exercises/6/my-answer/car-list.svelte";
 
 export function addData() {
 
-    carList.update((cars) => {
+    carList.update(cars => {
         return [
             {
                 make: "",
