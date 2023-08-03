@@ -1,38 +1,33 @@
 <script lang="ts">
     import carList from "$lib/stores/car.store";
     import { activeCarStore } from "$lib/stores/functional.store";
-    import {addData} from "$lib/stores/functional.store";
-    import {active} from "$lib/stores/functional.store";
-    import {carOut} from "$lib/stores/functional.store";
+    import { addData } from "$lib/stores/functional.store";
+    import { active } from "$lib/stores/functional.store";
+    import { carOut } from "$lib/stores/functional.store";
     // import {removeData} from "$lib/stores/functional.store";
     // import { handleRowClick } from "$lib/stores/functional.store";
-    let visible = false;  
+    let visible = false;
     function handleRowClick(car) {
-      if($activeCarStore === car){
-        $activeCarStore = null;
-      }
-      else{
-        $activeCarStore = car;
-          visible = !visible;         
-      }
-    }  
-    function removeData(){
-      carList.update((cars)=>{
-        alert('are you sure you want to remove this',cars)
-        if($activeCarStore !== null)
-            return[
-                
-                ...cars.slice()
-            ]
-             
-          })
-      }
+        if ($activeCarStore === car) {
+            $activeCarStore = null;
+        } else {
+            $activeCarStore = car;
+            visible = !visible;
+        }
+    }
+    function removeData() {
+        carList.update((cars) => {
+            alert("are you sure you want to remove this", cars);
+            if ($activeCarStore !== null) return [...cars.slice()];
+        });
+    }
 </script>
+
 <div class="button-group">
-<button on:click={addData} class="add">add a car</button>
-{#if visible === true}
-<button on:click={removeData} class="delete">Remove this car</button>
-{/if}
+    <button on:click={addData} class="add">add a car</button>
+    {#if visible === true}
+        <button on:click={removeData} class="delete">Remove this car</button>
+    {/if}
 </div>
 <div class="header">
     <div class="header-item">Make</div>
@@ -47,24 +42,51 @@
         <div
             class="row"
             class:active-car={$activeCarStore === car}
-            on:click={()=>handleRowClick(car)}
-             
+            on:click={() => handleRowClick(car)}
         >
-        <!-- I had to use contenteditable otherwise the bind innerText does not work -->
-            <div class="row-item"contenteditable = 'true' bind:innerText={car.make}>{car.make}</div>
+            <!-- I had to use contenteditable otherwise the bind innerText does not work -->
+            <div
+                class="row-item"
+                contenteditable="true"
+                bind:innerText={car.make}
+            >
+                {car.make}
+            </div>
             <hr class="column-line" />
-            <div class="row-item" contenteditable = 'true' bind:innerText={car.model}>{car.model}</div>
+            <div
+                class="row-item"
+                contenteditable="true"
+                bind:innerText={car.model}
+            >
+                {car.model}
+            </div>
             <hr class="column-line" />
-            <div class="row-item" contenteditable = 'true' bind:innerText={car.year}>{car.year}</div>
+            <div
+                class="row-item"
+                contenteditable="true"
+                bind:innerText={car.year}
+            >
+                {car.year}
+            </div>
             <hr class="column-line" />
-            <div class="row-item" contenteditable = 'true' bind:innerText={car.mileage}>{car.mileage}</div>
+            <div
+                class="row-item"
+                contenteditable="true"
+                bind:innerText={car.mileage}
+            >
+                {car.mileage}
+            </div>
             <hr class="column-line" />
-            <div class="row-item" contenteditable = 'true' bind:innerText={car.condition}>{car.condition}</div>
+            <div
+                class="row-item"
+                contenteditable="true"
+                bind:innerText={car.condition}
+            >
+                {car.condition}
+            </div>
         </div>
     {/each}
 </div>
-
-
 
 <style>
     .header {
@@ -109,7 +131,7 @@
         padding: 0px;
         margin: 0px;
     }
-    .button-group{
+    .button-group {
         display: flex;
         position: relative;
         flex-direction: column;
@@ -117,15 +139,14 @@
         row-gap: 3px;
     }
     .add {
-       width: 150px;
-       background-color: aquamarine;
-       color:#aaaaff
+        width: 150px;
+        background-color: aquamarine;
+        color: #aaaaff;
     }
-    .delete{
+    .delete {
         width: 150px;
         background-color: #990000;
         color: #ffff88;
-       
     }
     .row.active-car {
         background-color: #7777ee;

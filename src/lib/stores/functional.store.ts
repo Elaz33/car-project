@@ -32,7 +32,7 @@ export function removeData() {
         if (active === writable(true)) {
             return [
                 ...cars.slice(cars)
-              
+
             ];
         }
     });
