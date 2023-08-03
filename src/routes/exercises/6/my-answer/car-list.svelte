@@ -1,54 +1,70 @@
 <script lang="ts">
     import carList from "$lib/stores/car.store";
-    import {activeCarStore} from "$lib/stores/functional.store";
-   
-    // import changeData from  "$lib/stores/car.store";
-
-    function changeData() {
-    carList.update(cars => {
-        return [
-            ...cars,
-            {
-                make: "toyota",
-                model: "camry",
-                year: "2015",
-                mileage: 100000,
-                condition: "fair"
-            }
-        ]
-    })
-}
+    import { activeCarStore } from "$lib/stores/functional.store";
+    import {addData} from "$lib/stores/functional.store";
+    import {active} from "$lib/stores/functional.store";
+    import {carOut} from "$lib/stores/functional.store";
+    // import {removeData} from "$lib/stores/functional.store";
+    // import { handleRowClick } from "$lib/stores/functional.store";
+    let visible = false;  
+    function handleRowClick(car) {
+      if($activeCarStore === car){
+        $activeCarStore = null;
+      }
+      else{
+        $activeCarStore = car;
+          visible = !visible;         
+      }
+    }  
+    function removeData(){
+      carList.update((cars)=>{
+        alert('are you sure you want to remove this',cars)
+        if($activeCarStore !== null)
+            return[
+                
+                ...cars.slice()
+            ]
+             
+          })
+      }
 </script>
-<button on:click ="{changeData}" class="add">add a car</button>
+<div class="button-group">
+<button on:click={addData} class="add">add a car</button>
+{#if visible === true}
+<button on:click={removeData} class="delete">Remove this car</button>
+{/if}
+</div>
 <div class="header">
     <div class="header-item">Make</div>
     <div class="header-item">Model</div>
     <div class="header-item">Year</div>
-    <div class="header-item">Milage</div>
+    <div class="header-item">Mileage</div>
     <div class="header-item">Condition</div>
 </div>
 
-<div  class="table">
+<div class="table">
     {#each $carList as car}
-        <div  class="row" class:active-car ={$activeCarStore = car}  on:click={()=> {$activeCarStore = car} }   >
-            <div class="row-item">{car.make}</div>
+        <div
+            class="row"
+            class:active-car={$activeCarStore === car}
+            on:click={()=>handleRowClick(car)}
+             
+        >
+        <!-- I had to use contenteditable otherwise the bind innerText does not work -->
+            <div class="row-item"contenteditable = 'true' bind:innerText={car.make}>{car.make}</div>
             <hr class="column-line" />
-            <div   class="row-item">{car.model}</div>
+            <div class="row-item" contenteditable = 'true' bind:innerText={car.model}>{car.model}</div>
             <hr class="column-line" />
-            <div   class="row-item">{car.year}</div>
+            <div class="row-item" contenteditable = 'true' bind:innerText={car.year}>{car.year}</div>
             <hr class="column-line" />
-            <div    class="row-item">{car.mileage}</div>
-            <hr class="column-line" /> 
-            <div   class="row-item">{car.condition}</div>
+            <div class="row-item" contenteditable = 'true' bind:innerText={car.mileage}>{car.mileage}</div>
+            <hr class="column-line" />
+            <div class="row-item" contenteditable = 'true' bind:innerText={car.condition}>{car.condition}</div>
         </div>
     {/each}
 </div>
 
-<div class="active-box-id">
-    {#if $activeCarStore !== null}
-  activeCar: {$activeCarStore.make}
-  {/if}
-</div>
+
 
 <style>
     .header {
@@ -76,11 +92,10 @@
         background-color: #d1d1d1;
     }
     .row:hover {
-        /* background-color: #aaaaff; */
+        background-color: #aaaaff;
         color: #fff;
         cursor: pointer;
     }
-   
 
     .row-item {
         display: flex;
@@ -94,11 +109,25 @@
         padding: 0px;
         margin: 0px;
     }
-    .add{
-      position: relative;
-      left: 70%;
+    .button-group{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        left: 65%;
+        row-gap: 3px;
     }
-    .active-car{
-      background-color:#7777ee;
+    .add {
+       width: 150px;
+       background-color: aquamarine;
+       color:#aaaaff
+    }
+    .delete{
+        width: 150px;
+        background-color: #990000;
+        color: #ffff88;
+       
+    }
+    .row.active-car {
+        background-color: #7777ee;
     }
 </style>

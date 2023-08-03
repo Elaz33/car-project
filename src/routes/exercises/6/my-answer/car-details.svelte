@@ -1,28 +1,67 @@
 <script lang="ts">
     import CarList from "./car-list.svelte";
-   import {activeCarStore} from "$lib/stores/functional.store";
-
-
-  
+    import carList from "$lib/stores/car.store";
+    import { activeCarStore } from "$lib/stores/functional.store";
 </script>
 
-<section class="car-info">
+<div class="container">
     {#if $activeCarStore !== null}
-    Make: <input class="car-info" type="text"  value={$activeCarStore.make}/>  
-    Model: <input class="car-info" type="text" value= {$activeCarStore.model} />
-    Year: <input class="car-info" type="number" value={$activeCarStore.year} />
-    Condition: <input class="car-info" type="text" value={$activeCarStore.condition}/>
+        <div class="input-group">
+            <div class="header">Make:</div>
+            <input class="car-info" type="text" value={$activeCarStore.make} />
+        </div>
+        <div class="input-group">
+            <div class="header">Model:</div>
+            <input class="car-info" type="text" value={$activeCarStore.model} />
+        </div>
+        <div class="input-group">
+            <div class="header">Year:</div>
+            <input
+                class="car-info"
+                type="number"
+                value={$activeCarStore.year}
+            />
+        </div>
+        <div class="input-group">
+            <div class="header">Mileage:</div>
+            <input
+                class="car-info"
+                type="number"
+                value={$activeCarStore.mileage}
+            />
+        </div>
+        <div class="input-group">
+            <div class="header">Condition:</div>
+            <input
+                class="car-info"
+                type="text"
+                value={$activeCarStore.condition}
+            />
+        </div>
     {/if}
-</section>
+</div>
 
 <style>
+    .container {
+        display: flex;
+        width: 18%;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    .input-group {
+        display: flex;
+        position: relative;
+        left: 0px;
+    }
     .car-info {
         position: relative;
-        display: flex;
+        flex: 3;
+        left: 3%;
+    }
+
+    .header {
+        position: relative;
         flex: 1;
-        width: fit-content;
-        left: 10px;
-        flex-direction: column;
-        justify-content: right;
+        text-align: right;
     }
 </style>

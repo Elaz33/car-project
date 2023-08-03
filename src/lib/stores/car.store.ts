@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
 
 const carStore = writable([{
+    id:1,
     make: "toyota",
     model: "camry",
     year: "2022",
@@ -8,6 +9,7 @@ const carStore = writable([{
     condition: "fair"
 },
 {
+    id:2,
     make: "toyota",
     model: "sienna",
     year: 2013,
@@ -15,6 +17,7 @@ const carStore = writable([{
     condition: "fair"
 },
 {
+    id:3,
     make: "honda",
     model: "accord",
     year: 2021,
@@ -22,6 +25,7 @@ const carStore = writable([{
     condition: "good"
 },
 {
+    id:4,
     make: "toyota",
     model: "odyssey",
     year: 2023,
@@ -29,6 +33,7 @@ const carStore = writable([{
     condition: "excellent"
 },
 {
+    id:5,
     make: "ford",
     model: "crown victoria",
     year: 2005,
