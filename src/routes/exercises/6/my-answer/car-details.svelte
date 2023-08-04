@@ -8,10 +8,12 @@
         carList.update(cars => {
             if ($activeCarStore === null) return cars;      // do nothing
             //------------------------------------------------------------
-            const carIndex = cars.findIndex(car => {
-                return car.id === $activeCarStore.id;
-            });
-            cars[carIndex] = $activeCarStore;
+            // const carIndex = cars.findIndex(car => {
+            //     return car.id === $activeCarStore.id;
+            // });
+            /*  when I did this below it works without all the code on top why did you like that isn't 
+           the way I did below much more simple */
+            cars.id = $activeCarStore;
             return cars;
         });
     }
@@ -38,7 +40,7 @@
         </div>
         <div class="input-group">
             <div class="header">Model:</div>
-            <input class="car-info" type="text" bind:value={$activeCarStore.model} />
+            <input class="car-info" type="text" bind:value={$activeCarStore.model} on:keyup={updateCarList}/>
         </div>
         <div class="input-group">
             <div class="header">Year:</div>
@@ -46,6 +48,7 @@
                 class="car-info"
                 type="number"
                 bind:value={$activeCarStore.year}
+                on:keyup={updateCarList}
             />
         </div>
         <div class="input-group">
@@ -54,6 +57,7 @@
                 class="car-info"
                 type="number"
                 bind:value={$activeCarStore.mileage}
+                on:keyup={updateCarList}
             />
         </div>
         <div class="input-group">
@@ -62,6 +66,7 @@
                 class="car-info"
                 type="text"
                 bind:value={$activeCarStore.condition}
+                on:keyup={updateCarList}
             />
         </div>
     {/if}

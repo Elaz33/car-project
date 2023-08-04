@@ -38,4 +38,5 @@ export function removeData() {
     });
 }
 
+
 export const activeCarStore = writable(null);

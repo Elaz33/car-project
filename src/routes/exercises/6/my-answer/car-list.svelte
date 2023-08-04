@@ -2,23 +2,34 @@
     import carList from "$lib/stores/car.store";
     import { activeCarStore } from "$lib/stores/functional.store";
     import { addData } from "$lib/stores/functional.store";
-    import { active } from "$lib/stores/functional.store";
-    import { carOut } from "$lib/stores/functional.store";
+    
     // import {removeData} from "$lib/stores/functional.store";
     // import { handleRowClick } from "$lib/stores/functional.store";
     let visible = false;
     function handleRowClick(car) {
         if ($activeCarStore === car) {
             $activeCarStore = null;
+            visible = !visible;
         } else {
             $activeCarStore = car;
-            visible = !visible;
+            visible = true;
         }
     }
+    let found:number;
     function removeData() {
         carList.update((cars) => {
-            alert("are you sure you want to remove this", cars);
-            if ($activeCarStore !== null) return [...cars.slice()];
+            if ($activeCarStore !== null){
+              found = cars.find((element) =>{
+             return   element.id === $activeCarStore.id    
+            })
+            } 
+            console.log(found.id);
+            console.log($activeCarStore.id)
+            console.log(found)
+            console.log($activeCarStore)
+            confirm("are you sure you want to remove this" + ' ' + $activeCarStore.make  + ' ' + $activeCarStore.model + ' ' + $activeCarStore.year );
+            // cars[cars.length-1].id;
+            return cars.splice(found.id);
         });
     }
 
