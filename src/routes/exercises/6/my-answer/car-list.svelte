@@ -2,9 +2,8 @@
     import carList from "$lib/stores/car.store";
     import { activeCarStore } from "$lib/stores/functional.store";
     import { addData } from "$lib/stores/functional.store";
-    
-    // import {removeData} from "$lib/stores/functional.store";
-    // import { handleRowClick } from "$lib/stores/functional.store";
+    import { inp } from "$lib/stores/car.store";
+
     let visible = false;
     function handleRowClick(car) {
         if ($activeCarStore === car) {
@@ -15,24 +14,33 @@
             visible = true;
         }
     }
-    let found:number;
+    let car: any;
     function removeData() {
-        carList.update((cars) => {
-            if ($activeCarStore !== null){
-              found = cars.find((element) =>{
-             return   element.id === $activeCarStore.id    
-            })
-            } 
-            console.log(found.id);
-            console.log($activeCarStore.id)
-            console.log(found)
-            console.log($activeCarStore)
-            confirm("are you sure you want to remove this" + ' ' + $activeCarStore.make  + ' ' + $activeCarStore.model + ' ' + $activeCarStore.year );
-            // cars[cars.length-1].id;
-            return cars.splice(found.id);
-        });
+        if ($activeCarStore !== null) {
+            car = $carList.findIndex((carIndex) => {
+                return carIndex === $activeCarStore;
+            });
+            console.log(car);
+        }
+        if (
+            confirm(
+                "are you sure you want to remove this" +
+                    " " +
+                    $activeCarStore.make +
+                    " " +
+                    $activeCarStore.model +
+                    " " +
+                    $activeCarStore.year
+            ) === true
+        ) {
+            $activeCarStore = null;
+            console.log(car);
+            $carList.splice(car, 1);
+            carList.update((cars) => cars);
+        } else {
+            return $carList;
+        }
     }
-
 
     function onAddCar() {
         addData();
@@ -41,14 +49,15 @@
         $activeCarStore = $carList[0];
 
         // move the focus (using vanilla javascript)
-        const inp:HTMLInputElement = document.querySelector('.car-make');
-        inp.focus();
+        // const inp: HTMLInputElement = document.querySelector(".car-make");
+        // inp.focus();
 
         // move the focus (using svelte)
         // const inp2;
         // inp2.focus();
-    }
 
+        // $inp.focus();
+    }
 </script>
 
 <div class="button-group">
@@ -72,33 +81,23 @@
             class:active-car={$activeCarStore === car}
             on:click={() => handleRowClick(car)}
         >
-            <div
-                class="row-item"
-            >
+            <div class="row-item">
                 {car.make}
             </div>
             <hr class="column-line" />
-            <div
-                class="row-item"
-            >
+            <div class="row-item">
                 {car.model}
             </div>
             <hr class="column-line" />
-            <div
-                class="row-item"
-            >
+            <div class="row-item">
                 {car.year}
             </div>
             <hr class="column-line" />
-            <div
-                class="row-item"
-            >
+            <div class="row-item">
                 {car.mileage}
             </div>
             <hr class="column-line" />
-            <div
-                class="row-item"
-            >
+            <div class="row-item">
                 {car.condition}
             </div>
         </div>

@@ -25,18 +25,7 @@ export function addData() {
         ];
     });
 }
-export let carOut = writable();
-export let active = writable(false);
-export function removeData() {
-    carList.update((cars) => {
-        if (active === writable(true)) {
-            return [
-                ...cars.slice(cars)
 
-            ];
-        }
-    });
-}
 
 
 export const activeCarStore = writable(null);

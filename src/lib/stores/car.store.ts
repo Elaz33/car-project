@@ -41,11 +41,8 @@ const carStore = writable([{
     condition: "poor"
 },
 ]);
-// export function addIds() {
-// //     carStore.update((cars, i) => {
-// //         cars.id = i + 1;
-// //     })
-// // }
+export let inp = null;
+
 
 export default carStore;
 
