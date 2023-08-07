@@ -6,3 +6,4 @@
 <p><a href="/exercises/5/instructions">Exercise 5</a></p>
 <p><a href="/exercises/6/instructions">Exercise 6</a></p>
 <p><a href="/exercises/7/instructions">Exercise 7</a></p>
+<p><a href="/exercises/8/instructions">Exercise 8</a></p>
