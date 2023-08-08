@@ -49,8 +49,8 @@
         $activeCarStore = $carList[0];
 
         // move the focus (using vanilla javascript)
-        // const inp: HTMLInputElement = document.querySelector(".car-make");
-        // inp.focus();
+        const inp: HTMLInputElement = document.querySelector(".car-make");
+        inp.focus();
 
         // move the focus (using svelte)
         // const inp2;
@@ -90,11 +90,15 @@
             </div>
             <hr class="column-line" />
             <div class="row-item">
+                {#if car.year !== null}
                 {car.year}
+                {/if}
             </div>
             <hr class="column-line" />
             <div class="row-item">
+                {#if car.mileage !== null}
                 {car.mileage}
+                {/if}
             </div>
             <hr class="column-line" />
             <div class="row-item">

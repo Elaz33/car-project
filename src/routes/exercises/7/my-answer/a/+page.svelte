@@ -5,10 +5,8 @@
             triples.push(i);
         }
     }
-    console.log(triples);
 </script>
 
-{#each triples as three}
-    <div class="threes">{three}</div>
+{#each triples as threes}
+    <div class="threes">{threes}</div>
 {/each}
-

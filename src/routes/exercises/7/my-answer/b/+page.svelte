@@ -1,7 +1,9 @@
 <script>
     let pies = [];
+    let copy;
     for (let i = 0; i <= 50; i++) {
-        pies.push(i * Math.PI);
+        copy = i * Math.PI;
+        pies.push(copy.toPrecision(3));
     }
     console.log(pies);
 </script>

@@ -42,6 +42,7 @@
             <input
                 class="car-info"
                 type="text"
+                name="name"
                 bind:value={$activeCarStore.model}
                 on:keyup={updateCarList}
             />
@@ -51,6 +52,9 @@
             <input
                 class="car-info"
                 type="number"
+                name="num"
+                min="4"
+                max="6"
                 bind:value={$activeCarStore.year}
                 on:keyup={updateCarList}
             />
@@ -60,6 +64,9 @@
             <input
                 class="car-info"
                 type="number"
+                name="num"
+                min="1"
+                max="350000"
                 bind:value={$activeCarStore.mileage}
                 on:keyup={updateCarList}
             />
@@ -69,6 +76,7 @@
             <input
                 class="car-info"
                 type="text"
+                pattern="a-z"
                 bind:value={$activeCarStore.condition}
                 on:keyup={updateCarList}
             />
