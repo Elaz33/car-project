@@ -1,22 +1,21 @@
 <script lang="ts">
     import carList from "$lib/stores/car.store";
     import { activeCarStore } from "$lib/stores/functional.store";
-    import { inp } from "$lib/stores/car.store";
-    import { writable } from "svelte/store";
+   
 
-    function updateCarListByIndex() {
-        carList.update((cars) => {
-            if ($activeCarStore === null) return cars; // do nothing
+    // function updateCarListByIndex() {
+    //     carList.update((cars) => {
+    //         if ($activeCarStore === null) return cars; // do nothing
             //------------------------------------------------------------
             // const carIndex = cars.findIndex(car => {
             //     return car.id === $activeCarStore.id;
             // });
             /*  when I did this below it works without all the code that you did  on top  isn't 
            the way I did below much more simple */
-            cars.id = $activeCarStore;
-            return cars;
-        });
-    }
+    //         cars.id = $activeCarStore;
+    //         return cars;
+    //     });
+    // }
 
     function updateCarList() {
         carList.update((cars) => cars);
@@ -88,6 +87,7 @@
     .container {
         display: flex;
         width: 18%;
+        min-width: 300px;
         flex-direction: column;
         row-gap: 10px;
     }
