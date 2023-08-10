@@ -17,7 +17,7 @@
     <div class="cell">{num}</div>
   {/each}
 </div>
-row
+
 
 {#each numbers as rowNum}
   <div class="row-of-nums">

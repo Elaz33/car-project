@@ -1,10 +1,9 @@
 <script lang="ts">
   let stringNumbs = "5, 8, 13, 46, 888, 222".split(",");
   let numbersSplit = stringNumbs.map((number) => {
-    return (number = number.trim());
+    return parseInt(number.trim());
   });
-      numbersSplit.sort((highest,lowest) => highest - lowest)
-      numbersSplit.reverse()
+  numbersSplit.sort((highest, lowest) => lowest - highest);
 </script>
 
 <!------------------------------------------------------------>

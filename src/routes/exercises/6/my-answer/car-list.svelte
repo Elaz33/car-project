@@ -66,8 +66,10 @@
 
 <div class="table">
     {#each $carList as car}
+
         <div
-            class="row"
+            class="row"   
+            class:not-active ={$activeCarStore != car}        
             class:active-car={$activeCarStore === car}
             on:click={() => handleRowClick(car)}
         >
