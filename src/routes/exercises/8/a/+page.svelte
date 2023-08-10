@@ -12,12 +12,11 @@
 <h4>Here is a typical grade-school times table from 1 to 12</h4>
 
 <div class="row-of-nums header">
-  <div class="cell header" />
+  <div class="cell header"></div>
   {#each numbers as num}
     <div class="cell">{num}</div>
   {/each}
 </div>
-
 
 {#each numbers as rowNum}
   <div class="row-of-nums">

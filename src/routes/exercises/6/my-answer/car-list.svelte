@@ -2,7 +2,7 @@
     import carList from "$lib/stores/car.store";
     import { activeCarStore } from "$lib/stores/functional.store";
     import { addData } from "$lib/stores/functional.store";
-  
+ 
     let visible = false;
     function handleRowClick(car) {
         if ($activeCarStore === car) {
@@ -20,17 +20,14 @@
                 return carIndex === $activeCarStore;
             });
         }
-        if (
-            confirm(
-                "are you sure you want to remove this" +
-                    " " +
-                    $activeCarStore.make +
-                    " " +
-                    $activeCarStore.model +
-                    " " +
-                    $activeCarStore.year
-            ) === true 
-        ) {
+
+
+        const confirmMessage = (isActiveCarEmpty())
+          ? "Are you sure you want to remove this new car record"
+          : `Are you sure you want to remove this ${$activeCarStore.make} ${$activeCarStore.model} ${$activeCarStore.year}`;
+
+
+        if (confirm(confirmMessage)) {
             $activeCarStore = null;
             $carList.splice(car, 1);
             carList.update((cars) => cars);
@@ -47,6 +44,21 @@
         // move the focus (using vanilla javascript)
         const inp: HTMLInputElement = document.querySelector(".car-make");
         inp.focus();
+
+        // move the focus (using svelte)
+        // const inp2;
+        // inp2.focus();
+
+        // $inp.focus();
+    }
+
+    function isActiveCarEmpty():boolean {
+        return $activeCarStore.make === null  ||
+          $activeCarStore.make === ""  ||
+          $activeCarStore.model === null  ||
+          $activeCarStore.model === ""  ||
+          $activeCarStore.year === null  ||
+          $activeCarStore.year === "";
     }
 </script>
 
