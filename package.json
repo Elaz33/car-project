@@ -25,6 +25,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"bootstrap": "^3.4.1",
 		"sass": "^1.63.6"
 	}
 }

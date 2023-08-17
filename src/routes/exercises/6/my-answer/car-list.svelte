@@ -2,7 +2,7 @@
     import carList from "$lib/stores/car.store";
     import { activeCarStore } from "$lib/stores/functional.store";
     import { addData } from "$lib/stores/functional.store";
- 
+
     let visible = false;
     function handleRowClick(car) {
         if ($activeCarStore === car) {
@@ -21,11 +21,9 @@
             });
         }
 
-
-        const confirmMessage = (isActiveCarEmpty())
-          ? "Are you sure you want to remove this new car record"
-          : `Are you sure you want to remove this ${$activeCarStore.make} ${$activeCarStore.model} ${$activeCarStore.year}`;
-
+        const confirmMessage = isActiveCarEmpty()
+            ? "Are you sure you want to remove this new car record"
+            : `Are you sure you want to remove this ${$activeCarStore.make} ${$activeCarStore.model} ${$activeCarStore.year}`;
 
         if (confirm(confirmMessage)) {
             $activeCarStore = null;
@@ -52,20 +50,25 @@
         // $inp.focus();
     }
 
-    function isActiveCarEmpty():boolean {
-        return $activeCarStore.make === null  ||
-          $activeCarStore.make === ""  ||
-          $activeCarStore.model === null  ||
-          $activeCarStore.model === ""  ||
-          $activeCarStore.year === null  ||
-          $activeCarStore.year === "";
+    function isActiveCarEmpty(): boolean {
+        return (
+            $activeCarStore.make === null ||
+            $activeCarStore.make === "" ||
+            $activeCarStore.model === null ||
+            $activeCarStore.model === "" ||
+            $activeCarStore.year === null ||
+            $activeCarStore.year === ""
+        );
     }
 </script>
 
+<h1 class="title">Used Car Inventory Manager</h1>
+<h3 class="title">A working example of CRUD in Svelte</h3>
+<hr class="space" />
 <div class="button-group">
-    <button on:click={onAddCar} class="add">add a car</button>
+    <button on:click={onAddCar} class="btn btn-success">+</button>
     {#if visible === true}
-        <button on:click={removeData} class="delete">Remove this car</button>
+        <button on:click={removeData} class="btn btn-warning">-</button>
     {/if}
 </div>
 <div class="header">
@@ -78,10 +81,8 @@
 
 <div class="table">
     {#each $carList as car}
-
         <div
-            class="row"   
-            class:not-active ={$activeCarStore != car}        
+            class="row"
             class:active-car={$activeCarStore === car}
             on:click={() => handleRowClick(car)}
         >
@@ -113,10 +114,22 @@
 </div>
 
 <style>
-   
+    :global(body) {
+        background-color: #f8f8f8;
+    }
+    .title {
+        text-align: center;
+    }
+    .space {
+        width: 50%;
+    }
     .header {
         display: flex;
-        width: 75%;
+        width: 50%;
+        margin: auto;
+    }
+    .table {
+        text-align: center;
     }
 
     .header-item {
@@ -129,8 +142,8 @@
     .row {
         display: flex;
         flex: 1;
-        width: 75%;
-        justify-content: center;
+        width: 50%;
+        margin: auto;
     }
     .row:nth-of-type(odd) {
         background-color: #f1f1f1;
@@ -147,7 +160,7 @@
     .row-item {
         display: flex;
         flex: 1;
-        width: 75%;
+        width: 50%;
         justify-content: center;
         padding: 15px;
     }
@@ -159,18 +172,25 @@
     .button-group {
         display: flex;
         position: relative;
-        flex-direction: column;
-        left: 65%;
+        text-align: center;
         row-gap: 3px;
     }
-    .add {
-        width: 150px;
-        background-color: aquamarine;
-        color: #aaaaff;
+    .btn {
+        height: 30px;
+        width: 30px;
     }
-    .delete {
-        width: 150px;
-        background-color: #990000;
+    /* I am using bootstrap */
+    .btn-success {
+        position: relative;
+        left: 70%;
+        background-color: rgb(10, 118, 82);
+        color: white;
+    }
+       /* I am using bootstrap */
+    .btn-warning {
+        position: relative;
+        left: 71%;
+        background-color: #d61919;
         color: #ffff88;
     }
     .row.active-car {

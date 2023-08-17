@@ -1,16 +1,15 @@
 <script lang="ts">
     import carList from "$lib/stores/car.store";
     import { activeCarStore } from "$lib/stores/functional.store";
-   
 
     // function updateCarListByIndex() {
     //     carList.update((cars) => {
     //         if ($activeCarStore === null) return cars; // do nothing
-            //------------------------------------------------------------
-            // const carIndex = cars.findIndex(car => {
-            //     return car.id === $activeCarStore.id;
-            // });
-            /*  when I did this below it works without all the code that you did  on top  isn't 
+    //------------------------------------------------------------
+    // const carIndex = cars.findIndex(car => {
+    //     return car.id === $activeCarStore.id;
+    // });
+    /*  when I did this below it works without all the code that you did  on top  isn't 
            the way I did below much more simple */
     //         cars.id = $activeCarStore;
     //         return cars;
@@ -21,6 +20,13 @@
         carList.update((cars) => cars);
     }
 </script>
+
+{#if $activeCarStore !== null}
+    <div class="details-headline">
+        <h2>Car Details</h2>
+        <hr class="space" />
+    </div>
+{/if}
 
 <div class="container">
     {#if $activeCarStore !== null}
@@ -86,15 +92,30 @@
 <style>
     .container {
         display: flex;
+        position: relative;
         width: 18%;
         min-width: 300px;
+        left: 77%;
+        bottom: 300px;
         flex-direction: column;
         row-gap: 10px;
+    }
+    .details-headline {
+        position: relative;
+        text-align: right;
+        right: 7%;
+        bottom: 300px;
+    }
+    .space {
+        position: relative;
+        width: 10%;
+        left: 46.5%;
+        bottom: 3px;
     }
     .input-group {
         display: flex;
         position: relative;
-        left: 0px;
+        right: 0px;
     }
     .car-info {
         position: relative;
