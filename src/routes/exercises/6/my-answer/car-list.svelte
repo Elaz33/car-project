@@ -176,20 +176,24 @@
         row-gap: 3px;
     }
     .btn {
-        height: 30px;
-        width: 30px;
+        height: 5%;
+        width: 5%;
     }
     /* I am using bootstrap */
     .btn-success {
         position: relative;
-        left: 70%;
+        left: 65%;
+         border: solid;
+         font-size: x-large;       
         background-color: rgb(10, 118, 82);
         color: white;
     }
        /* I am using bootstrap */
     .btn-warning {
         position: relative;
-        left: 71%;
+        left: 65%;
+         border: solid;
+        font-size: x-large;
         background-color: #d61919;
         color: #ffff88;
     }
