@@ -66,7 +66,7 @@
 <h3 class="title">A working example of CRUD in Svelte</h3>
 <hr class="space" />
 <div class="button-group">
-    <button on:click={onAddCar} class="btn btn-success">+</button>
+    <button on:click={onAddCar} class:pressed-car={visible === true} class="btn btn-success">+</button>
     {#if visible === true}
         <button on:click={removeData} class="btn btn-warning">-</button>
     {/if}
@@ -129,7 +129,9 @@
         margin: auto;
     }
     .table {
+        position: relative;
         text-align: center;
+        min-width: 1000px;
     }
 
     .header-item {
@@ -182,8 +184,8 @@
     /* I am using bootstrap */
     .btn-success {
         position: relative;
-        left: 65%;
-         border: solid;
+        left: 70%;
+         border: none;
          font-size: x-large;       
         background-color: rgb(10, 118, 82);
         color: white;
@@ -192,10 +194,13 @@
     .btn-warning {
         position: relative;
         left: 65%;
-         border: solid;
+         border: none;
         font-size: x-large;
         background-color: #d61919;
         color: #ffff88;
+    }
+    .pressed-car{
+      left: 64%;
     }
     .row.active-car {
         background-color: #7777ee;

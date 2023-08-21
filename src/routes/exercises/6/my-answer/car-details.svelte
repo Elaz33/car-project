@@ -92,8 +92,9 @@
 <style>
     .container {
         display: flex;
+
         position: relative;
-        width: 18%;
+        width: 10%;
         min-width: 300px;
         left: 77%;
         bottom: 300px;
@@ -115,7 +116,6 @@
     .input-group {
         display: flex;
         position: relative;
-        right: 0px;
     }
     .car-info {
         position: relative;
