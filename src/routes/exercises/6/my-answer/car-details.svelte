@@ -21,15 +21,19 @@
     }
 </script>
 
-{#if $activeCarStore !== null}
+<!-- {#if $activeCarStore !== null}
     <div class="details-headline">
-        <h2>Car Details</h2>
+        <h2 class="head-line">Car Details</h2>
         <hr class="space" />
     </div>
-{/if}
+{/if} -->
 
 <div class="container">
     {#if $activeCarStore !== null}
+     <div class="details-headline">
+        <h2 class="head-line">Car Details</h2>
+        <hr class="space" />
+    </div>
         <div class="input-group">
             <div class="header">Make:</div>
             <input
@@ -92,33 +96,39 @@
 <style>
     .container {
         display: flex;
-
         position: relative;
+        text-align: center;
         width: 10%;
         min-width: 300px;
-        left: 77%;
-        bottom: 300px;
+        /* left: 60%;   */
+        padding-right: 10%;
+        top: 175px;
         flex-direction: column;
         row-gap: 10px;
     }
-    .details-headline {
+  .details-headline {
         position: relative;
-        text-align: right;
-        right: 7%;
-        bottom: 300px;
+       justify-content: center;
     }
+   .head-line {
+        position: relative;
+         right: -10%;
+       
+    } 
+
     .space {
         position: relative;
-        width: 10%;
-        left: 46.5%;
-        bottom: 3px;
-    }
+        right: -10%;
+        width: 150px;
+        
+    } 
     .input-group {
         display: flex;
         position: relative;
     }
     .car-info {
         position: relative;
+
         flex: 3;
         left: 3%;
     }

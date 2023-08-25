@@ -4,6 +4,12 @@
     import { addData } from "$lib/stores/functional.store";
 
     let visible = false;
+    //    let keepCount = 0;
+    //    const count = {
+    //      increment: function inc(){
+    //          return keepCount += 1;
+    //      }
+    //    }
     function handleRowClick(car) {
         if ($activeCarStore === car) {
             $activeCarStore = null;
@@ -40,8 +46,10 @@
         $activeCarStore = $carList[0];
 
         // move the focus (using vanilla javascript)
-        const inp: HTMLInputElement = document.querySelector(".car-make");
-        inp.focus();
+             
+            const inp: HTMLInputElement = document.querySelector(".car-make");
+            inp.focus();
+      
 
         // move the focus (using svelte)
         // const inp2;
@@ -66,7 +74,11 @@
 <h3 class="title">A working example of CRUD in Svelte</h3>
 <hr class="space" />
 <div class="button-group">
-    <button on:click={onAddCar} class:pressed-car={visible === true} class="btn btn-success">+</button>
+    <button
+        on:click={onAddCar}
+        class:pressed-car={visible === true}
+        class="btn btn-success">+</button
+    >
     {#if visible === true}
         <button on:click={removeData} class="btn btn-warning">-</button>
     {/if}
@@ -113,38 +125,51 @@
     {/each}
 </div>
 
+<!-- <h1>the count is {keepCount}</h1>
+<button  on:click={count.increment}>+</button> -->
 <style>
     :global(body) {
         background-color: #f8f8f8;
+        
     }
     .title {
+        position: relative;
         text-align: center;
+        left: 10%;
     }
     .space {
+        position: relative;
+        left: 10%;
         width: 50%;
     }
     .header {
         display: flex;
-        width: 50%;
+        position:relative;
+         left: 10%;
+        top: 20px;
+        width: 75%;
         margin: auto;
     }
     .table {
         position: relative;
-        text-align: center;
-        min-width: 1000px;
+        text-align: center; 
+        /* min-width: 1000px;  */ 
+        left: 10%;
+        top: 20px;
     }
 
     .header-item {
         width: 75%;
         text-align: center;
-        flex: 1;
+         left: 10%;
+        /* flex: 1; */
         padding: 15px;
         font-size: larger;
     }
     .row {
         display: flex;
-        flex: 1;
-        width: 50%;
+        /* flex: 1; */
+        width: 75%;
         margin: auto;
     }
     .row:nth-of-type(odd) {
@@ -161,9 +186,10 @@
 
     .row-item {
         display: flex;
-        flex: 1;
-        width: 50%;
+        /* flex: 1; */
+        width: 75%;
         justify-content: center;
+        height: 15px;
         padding: 15px;
     }
     .column-line {
@@ -184,23 +210,23 @@
     /* I am using bootstrap */
     .btn-success {
         position: relative;
-        left: 70%;
-         border: none;
-         font-size: x-large;       
+        left: 92.3%;
+        border: none;
+        font-size: x-large;
         background-color: rgb(10, 118, 82);
         color: white;
     }
-       /* I am using bootstrap */
+    /* I am using bootstrap */
     .btn-warning {
         position: relative;
-        left: 65%;
-         border: none;
+        left: 87.5%;
+        border: none;
         font-size: x-large;
         background-color: #d61919;
         color: #ffff88;
     }
-    .pressed-car{
-      left: 64%;
+    .pressed-car {
+        left: 86%;
     }
     .row.active-car {
         background-color: #7777ee;
