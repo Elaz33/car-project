@@ -36,8 +36,6 @@
     .page{
        flex-direction: column;
     }
-  
-   
   }
 </style>
 

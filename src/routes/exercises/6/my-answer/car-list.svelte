@@ -146,6 +146,7 @@
         display: flex;
         position:relative;
          left: 10%;
+         min-width: 500px;
         top: 20px;
         width: 75%;
         margin: auto;
@@ -154,6 +155,7 @@
         position: relative;
         text-align: center; 
         /* min-width: 1000px;  */ 
+       
         left: 10%;
         top: 20px;
     }
@@ -170,6 +172,7 @@
         display: flex;
         /* flex: 1; */
         width: 75%;
+        min-width: 500px;
         margin: auto;
     }
     .row:nth-of-type(odd) {
@@ -200,18 +203,21 @@
     .button-group {
         display: flex;
         position: relative;
+        
         text-align: center;
         row-gap: 3px;
     }
     .btn {
         height: 5%;
-        width: 5%;
+         width:  5%;
+         min-width: 30px;
     }
     /* I am using bootstrap */
     .btn-success {
         position: relative;
         left: 92.3%;
         border: none;
+        /* min-width: 50px; */
         font-size: x-large;
         background-color: rgb(10, 118, 82);
         color: white;
@@ -221,9 +227,18 @@
         position: relative;
         left: 87.5%;
         border: none;
+         /* min-width: 50px; */
         font-size: x-large;
         background-color: #d61919;
         color: #ffff88;
+    }
+    @media(max-width:500px){
+       .row,.row-item{
+            width: 30%;
+        }
+    .header{
+          width: 30%;
+        }
     }
     .pressed-car {
         left: 86%;
