@@ -47,8 +47,8 @@
 
         // move the focus (using vanilla javascript)
              
-            // const inp: HTMLInputElement = document.querySelector(".car-make");
-            // inp.focus();
+            const inp: HTMLInputElement = document.querySelector(".car-make");
+            inp.focus();
       
 
         // move the focus (using svelte)
